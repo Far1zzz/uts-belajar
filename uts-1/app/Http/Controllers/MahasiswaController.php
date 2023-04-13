@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Mahasiswa;
 
 class MahasiswaController extends Controller
 {
@@ -71,5 +72,40 @@ class MahasiswaController extends Controller
         $kampus = "Universitas Multi Data Palembang";
         $result = DB::table('mahasiswas')->get();
         return view('mahasiswa.index', ['allmahasiswa' => $result, 'kampus' => $kampus]);
+    }
+
+    public function insertElq()
+    {
+        $mahasiswa = new Mahasiswa; //instansiasi class mahasiswa
+        $mahasiswa->npm = '2125250188';
+        $mahasiswa->nama_mahasiswa = 'Jainal';
+        $mahasiswa->tempat_lahir = 'Dimana Ajah';
+        $mahasiswa->tanggal_lahir = '2002-12-07';
+        $mahasiswa->alamat = 'Jl Entah kemana';
+        $mahasiswa->save(); //simpan data ke tabel mahasiwa
+        dump($mahasiswa); //melihat isi $mahasiswa
+    }
+
+    public function updateElq()
+    {
+        $mahasiswa = Mahasiswa::where('npm', '2125250188')->first(); //cari data mahasiswas berdasarkan npm
+        $mahasiswa->nama_mahasiswa  = 'Tarjo';
+        $mahasiswa->save(); //menyimpan data ke table mhasiswa
+        dump($mahasiswa); // melihat isi $mahasiswa
+    }
+
+    public function deleteElq()
+    {
+        $mahasiswa = Mahasiswa::where('npm', '2125250188')->first(); //cari data
+        $mahasiswa->delete(); //menghapus data mahasiswa berdasarkan npm dipocok
+        dump($mahasiswa); // melihat isi hatimu
+    }
+
+    public function selectElq()
+    {
+        $kampus = "Universitas Multi Data Palembang";
+        $mahasiswa = Mahasiswa::all();
+        //dump($mahasiswa);
+        return view('mahasiswa.index', ['allmahasiswa' => $mahasiswa, 'kampus' => $kampus]);
     }
 }

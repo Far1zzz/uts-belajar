@@ -34,13 +34,23 @@ Route::get('/fakultas', function () {
 
 Route::get('/prodi', [ProdiController::class, 'index']);
 
+//DB Facade
 Route::get('/mahasiswa/insert', [MahasiswaController::class, 'insert']);
 Route::get('/mahasiswa/update', [MahasiswaController::class, 'update']);
 Route::get('/mahasiswa/delete', [MahasiswaController::class, 'delete']);
 Route::get('/mahasiswa/select', [MahasiswaController::class, 'select']);
 
-
+//query builder
 Route::get('/mahasiswa/insert-qb', [MahasiswaController::class, 'insertQb']);
 Route::get('/mahasiswa/update-qb', [MahasiswaController::class, 'updateQb']);
 Route::get('/mahasiswa/delete-qb', [MahasiswaController::class, 'deleteQb']);
 Route::get('/mahasiswa/select-qb', [MahasiswaController::class, 'selectQb']);
+
+
+//eloquent
+//eloquent membutuhkan model untuk konversi data tabel mahasiswa menjadi object.
+//object akan diakses dari controller
+Route::get('/mahasiswa/insert-elq', [MahasiswaController::class, 'insertElq']);
+Route::get('/mahasiswa/update-elq', [MahasiswaController::class, 'updateElq']);
+Route::get('/mahasiswa/delete-elq', [MahasiswaController::class, 'deleteElq']);
+Route::get('/mahasiswa/select-elq', [MahasiswaController::class, 'selectElq']);
