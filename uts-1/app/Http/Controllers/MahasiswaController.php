@@ -32,4 +32,44 @@ class MahasiswaController extends Controller
         // dump($result);
         return view('mahasiswa.index', ['allmahasiswa' => $result, 'kampus' => $kampus]);
     }
+
+
+    public function insertQb()
+    {
+        $result = DB::table('mahasiswas')->insert(
+            [
+                'npm' => '2125250112',
+                'nama_mahasiswa' => 'Udin',
+                'tempat_lahir' => 'Afrika',
+                'tanggal_lahir' => '2001-01-01',
+                'alamat' => 'Jl Kematian',
+                'created_at' => now()
+            ]
+        );
+        dump($result);
+    }
+
+    public function updateQb()
+    {
+        $result = DB::table('mahasiswas')->where('npm', '2125250112')->update([
+            'nama_mahasiswa' => 'Jarwo',
+            'updated_at' => now()
+        ]);
+        dump($result);
+    }
+
+    public function deleteQb()
+    {
+        $result = DB::table('mahasiswas')
+            ->where('npm', '=', '2125250112')
+            ->delete();
+        dump($result);
+    }
+
+    public function selectQb()
+    {
+        $kampus = "Universitas Multi Data Palembang";
+        $result = DB::table('mahasiswas')->get();
+        return view('mahasiswa.index', ['allmahasiswa' => $result, 'kampus' => $kampus]);
+    }
 }
