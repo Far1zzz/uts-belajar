@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,8 @@ Route::get('/mahasiswa/insert-elq', [MahasiswaController::class, 'insertElq']);
 Route::get('/mahasiswa/update-elq', [MahasiswaController::class, 'updateElq']);
 Route::get('/mahasiswa/delete-elq', [MahasiswaController::class, 'deleteElq']);
 Route::get('/mahasiswa/select-elq', [MahasiswaController::class, 'selectElq']);
+
+Route::get('/peserta', [PesertaController::class, 'peserta']);
 
 //get with relationship
 Route::get('/users',  [UserController::class, 'index']);

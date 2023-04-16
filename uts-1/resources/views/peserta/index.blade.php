@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eloquent Relationships : Relasi One to One</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-body">
+              <h3>Belajar boskuh</h3>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Asal</th>
+                            <th>Foto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($allpeserta as $peserta)
+                        <tr>
+                            <td>{{ $peserta->nama }}</td>
+                            <td>{{ $peserta->email }}</td>
+                            <th>{{ $peserta->asal_pt }}</th>
+                            <th><img src={{ $peserta->url_foto }} alt=""></th>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
